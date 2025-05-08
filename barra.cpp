@@ -37,7 +37,7 @@ Barra::Barra(float x, float y, float ancho, float alto, float velocidad, int tec
     glEnableVertexAttribArray(0);
  }
 
- void Barra::processInput(GLFWwindow* window)
+ void Barra::processInput(GLFWwindow* window, float deltaTime)
  {
     if(glfwGetKey(window, teclaArriba_) == GLFW_PRESS)
     {

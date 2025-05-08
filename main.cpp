@@ -89,13 +89,17 @@ int main()
     // Loop principal
     while (!glfwWindowShouldClose(window)) 
     {
+
+        auto currentFrame = std::chrono::high_resolution_clock::now();
+        float deltaTime = std::chrono::duration<float>(currentFrame - lastFrame).count();
+        lastFrame = currentFrame;
         // Entrada
         glfwPollEvents();
-        barra1.processInput(window);
-        barra2.processInput(window);
+        barra1.processInput(window, deltaTime);
+        barra2.processInput(window, deltaTime);
         if(!pelota.espera)
         {
-            pelota.move();
+            pelota.move(deltaTime);
 
             
         
@@ -131,7 +135,7 @@ int main()
         }
         else
         {
-          pelota.timer();
+          pelota.timer(deltaTime);
         }
         // Renderizado
         glClearColor(0.05f, 0.05f, 0.1f, 1.0f);

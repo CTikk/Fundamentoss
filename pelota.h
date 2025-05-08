@@ -11,7 +11,6 @@ public:
     float vx_, vy_;
     float velocidad_;
     float radio_;
-    float deltaTime = 1.0f / 60.0f;
     float tiempoEspera = 5.0f;
     float tiempoReinicio;
     bool espera;
@@ -24,7 +23,7 @@ public:
     void reset();
 
     bool collidesWith(const Barra& barra);
-    bool timer();
+    bool timer(float deltaTime);
     int checkPoint(); // Devuelve 1 si punto jugador 1, 2 si punto jugador 2, 0 si ninguno
 
     void destroy();

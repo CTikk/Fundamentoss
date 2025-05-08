@@ -8,14 +8,14 @@ class Barra{
     public:
     float x_, y_; // Posicion
     float ancho_, alto_; // Tamaño
-    float velocidad_ = 1.0f;
-    float deltaTime = 1.0f / 60.0f;
+    float velocidad_;
+
     int teclaArriba_, teclaAbajo_; // Indicador de si se presiona o no la tecla
 
     GLuint VAO_, VBO_, EBO_;
 
     Barra(float x, float y, float ancho, float alto, float velocidad, int teclaArriba, int teclaABajo);
-    void processInput(GLFWwindow* window);
+    void processInput(GLFWwindow* window, float deltaTime);
     void update();
     void draw(GLuint shaderProgram);
     void destroy();
