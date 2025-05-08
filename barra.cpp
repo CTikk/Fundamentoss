@@ -74,7 +74,7 @@ Barra::Barra(float x, float y, float ancho, float alto, float velocidad, int tec
     glBindVertexArray(VAO_);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
  }
-
+// a
  void Barra::destroy()
  {
     glDeleteVertexArrays(1, &VAO_);
