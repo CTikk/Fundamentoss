@@ -15,7 +15,7 @@ public:
 
     GLuint VAO_, VBO_, EBO_;
 
-    Pelota(float velocidadInicial = 0.01f, float radio = 0.025f);
+    Pelota(float velocidadInicial = 0.01f * deltaTime, float radio = 0.025f);
     void move();
     void draw(GLuint shaderProgram);
     void reset();

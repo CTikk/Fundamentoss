@@ -41,7 +41,7 @@ Barra::Barra(float x, float y, float ancho, float alto, float velocidad, int tec
  {
     if(glfwGetKey(window, teclaArriba_) == GLFW_PRESS)
     {
-        y_ += velocidad_;
+        y_ += velocidad_ * deltaTime;
         if(y_ + alto_ / 2 > 1.0f)
         {
             y_ = 1.0f - alto_ / 2;
@@ -50,7 +50,7 @@ Barra::Barra(float x, float y, float ancho, float alto, float velocidad, int tec
 
     if(glfwGetKey(window, teclaAbajo_) == GLFW_PRESS)
     {
-        y_ -= velocidad_;
+        y_ -= velocidad_ * deltaTime;
         if(y_ - alto_ / 2 < -1.0f)
         {
             y_ = -1.0f + alto_ / 2;

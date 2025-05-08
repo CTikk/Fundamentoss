@@ -9,6 +9,7 @@ class Barra{
     float x_, y_; // Posicion
     float ancho_, alto_; // Tamaño
     float velocidad_;
+    float deltaTime = 1.0f / 60.0f;
     int teclaArriba_, teclaAbajo_; // Indicador de si se presiona o no la tecla
 
     GLuint VAO_, VBO_, EBO_;
