@@ -84,7 +84,8 @@ int main()
 
     // Crear la pelota
     Pelota pelota(0.01f); // velocidad inicial
-
+    int puntajeJugador1 = 0;
+    int puntajeJugador2 = 0;
     // Loop principal
     while (!glfwWindowShouldClose(window)) {
         // Entrada
@@ -106,6 +107,18 @@ int main()
         int punto = pelota.checkPoint();
         if (punto != 0) {
             std::cout << "Jugador " << punto << " anota un punto!\n";
+            if(punto == 1)
+            {
+                puntajeJugador1++;
+                std::cout << "Jugador 1 lleva: " << puntajeJugador1 << " puntos \n";
+            }
+            else if(puntp == 2)
+            {
+              puntajeJugador2++;
+              std::cout << "Jugador 2 lleva: " << puntajeJugador1 << " puntos \n";
+            }
+
+            
             pelota.reset();
         }
 

@@ -20,8 +20,8 @@ Pelota::Pelota(float velocidadInicial, float radio)
 {
     std::srand((unsigned)std::time(0));
     float angle = ((std::rand() % 120) - 60) * 3.14159f / 180.0f;
-    vx_ = std::cos(angle) * velocidad_;
-    vy_ = std::sin(angle) * velocidad_;
+    vx_ = std::cos(angle) * velocidad_ * deltaTime;
+    vy_ = std::sin(angle) * velocidad_ * deltaTime;
 
     glGenVertexArrays(1, &VAO_);
     glGenBuffers(1, &VBO_);
@@ -36,6 +36,18 @@ Pelota::Pelota(float velocidadInicial, float radio)
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+}
+bool Pelota::timer()
+{
+     tiempoReinicio += deltaTime;
+        if(tiempoReinicio >= tiempoEspera)
+        {
+          espera = false;
+          tiempoReinicio = 0.0f;
+          return true;
+        }
+    
+  return false;
 }
 
 void Pelota::move() {
@@ -75,11 +87,16 @@ void Pelota::draw(GLuint shaderProgram) {
 }
 
 void Pelota::reset() {
-    x_ = y_ = 0.0f;
-    float angle = ((std::rand() % 120) - 60) * 3.14159f / 180.0f;
-    float dir = (std::rand() % 2 == 0) ? 1.0f : -1.0f;
-    vx_ = dir * std::cos(angle) * velocidad_ * deltaTime;
-    vy_ = std::sin(angle) * velocidad_ * deltaTime;
+
+    if(timer())
+    {
+        x_ = y_ = 0.0f;
+        float angle = ((std::rand() % 120) - 60) * 3.14159f / 180.0f;
+        float dir = (std::rand() % 2 == 0) ? 1.0f : -1.0f;
+        vx_ = dir * std::cos(angle) * velocidad_ * deltaTime;
+        vy_ = std::sin(angle) * velocidad_ * deltaTime;
+    }
+       
 }
 
 void Pelota::destroy() {

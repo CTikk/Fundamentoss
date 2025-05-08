@@ -12,13 +12,17 @@ public:
     float velocidad_;
     float radio_;
     const float deltaTime = 1.0f / 60.0f;
+    bool espera;
+    float tiempoEspera = 1.0f;
+    float tiempoReinicio;
 
     GLuint VAO_, VBO_, EBO_;
 
-    Pelota(float velocidadInicial = 0.01f * deltaTime, float radio = 0.025f);
+    Pelota(float velocidadInicial = 0.01f, float radio = 0.025f);
     void move();
     void draw(GLuint shaderProgram);
     void reset();
+    bool timer();
 
     bool collidesWith(const Barra& barra);
     int checkPoint(); // Devuelve 1 si punto jugador 1, 2 si punto jugador 2, 0 si ninguno
