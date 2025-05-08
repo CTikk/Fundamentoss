@@ -8,7 +8,7 @@ class Barra{
     public:
     float x_, y_; // Posicion
     float ancho_, alto_; // Tamaño
-    float velocidad_;
+    float velocidad_ = 1.0f;
     float deltaTime = 1.0f / 60.0f;
     int teclaArriba_, teclaAbajo_; // Indicador de si se presiona o no la tecla
 

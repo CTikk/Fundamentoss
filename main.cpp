@@ -87,13 +87,19 @@ int main()
     int puntajeJugador1 = 0;
     int puntajeJugador2 = 0;
     // Loop principal
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window)) 
+    {
         // Entrada
         glfwPollEvents();
         barra1.processInput(window);
         barra2.processInput(window);
+        if(!pelota.espera)
+        {
+            pelota.move();
+
+            
         
-        pelota.move();
+        
 
         // Colisión con barras
         if (pelota.vx_ < 0 && pelota.collidesWith(barra1)) {
@@ -105,23 +111,28 @@ int main()
 
         // Verificar puntos
         int punto = pelota.checkPoint();
-        if (punto != 0) {
+        if (punto != 0) 
+        {
             std::cout << "Jugador " << punto << " anota un punto!\n";
             if(punto == 1)
             {
-                puntajeJugador1++;
+                puntajeJugador1 += 1;
                 std::cout << "Jugador 1 lleva: " << puntajeJugador1 << " puntos \n";
             }
             else if(punto == 2)
             {
-              puntajeJugador2++;
+              puntajeJugador2 += 1;
               std::cout << "Jugador 2 lleva: " << puntajeJugador1 << " puntos \n";
             }
 
             
             pelota.reset();
         }
-
+        }
+        else
+        {
+          pelota.timer();
+        }
         // Renderizado
         glClearColor(0.05f, 0.05f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

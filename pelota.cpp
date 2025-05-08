@@ -39,15 +39,17 @@ Pelota::Pelota(float velocidadInicial, float radio)
 }
 bool Pelota::timer()
 {
-     tiempoReinicio += deltaTime;
-        if(tiempoReinicio >= tiempoEspera)
+    if (espera) 
+    {
+        tiempoReinicio += deltaTime;
+        if (tiempoReinicio >= tiempoEspera) 
         {
-          espera = false;
-          tiempoReinicio = 0.0f;
-          return true;
+            espera = false;
+            tiempoReinicio = 0.0f;
+            return true;
         }
-    
-  return false;
+    }
+    return false;
 }
 
 void Pelota::move() {
@@ -88,14 +90,14 @@ void Pelota::draw(GLuint shaderProgram) {
 
 void Pelota::reset() {
 
-    if(timer())
-    {
+        espera = true;
+        tiempoReinicio = 0.0f;
         x_ = y_ = 0.0f;
         float angle = ((std::rand() % 120) - 60) * 3.14159f / 180.0f;
         float dir = (std::rand() % 2 == 0) ? 1.0f : -1.0f;
         vx_ = dir * std::cos(angle) * velocidad_ * deltaTime;
         vy_ = std::sin(angle) * velocidad_ * deltaTime;
-    }
+    
        
 }
 
