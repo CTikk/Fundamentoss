@@ -37,6 +37,7 @@ Pelota::Pelota(float velocidadInicial, float radio)
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 }
+//timer para pausar la pelota al reiniciar
 bool Pelota::timer(float deltaTime)
 {
     if (espera) 
@@ -60,7 +61,7 @@ void Pelota::move(float deltaTime) {
         vy_ = -vy_; // Rebote vertical
     }
 }
-
+//colisiones
 bool Pelota::collidesWith(const Barra& barra) {
     float barraIzq = barra.x_ - barra.ancho_ / 2;
     float barraDer = barra.x_ + barra.ancho_ / 2;
