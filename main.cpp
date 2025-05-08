@@ -3,6 +3,7 @@
 #include <iostream>
 #include "barra.h" // clase de barras
 #include "pelota.h" // clase de la pelota 
+#include <chrono>
 
 
 // === Shaders ===
@@ -79,13 +80,16 @@ int main()
     GLuint shaderProgram = crearShaderProgram();
 
     // Crear las dos barras
-    Barra barra1(-0.9f, 0.0f, 0.05f, 0.3f, 0.02f, GLFW_KEY_W, GLFW_KEY_S);         // Jugador 1
-    Barra barra2(0.9f, 0.0f, 0.05f, 0.3f, 0.02f, GLFW_KEY_UP, GLFW_KEY_DOWN);     // Jugador 2
+    Barra barra1(-0.9f, 0.0f, 0.05f, 0.3f, 5.0f, GLFW_KEY_W, GLFW_KEY_S);         // Jugador 1
+    Barra barra2(0.9f, 0.0f, 0.05f, 0.3f, 5.0f, GLFW_KEY_UP, GLFW_KEY_DOWN);     // Jugador 2
 
     // Crear la pelota
-    Pelota pelota(0.01f); // velocidad inicial
+    Pelota pelota(1.5f); // velocidad inicial
     int puntajeJugador1 = 0;
     int puntajeJugador2 = 0;
+
+    auto lastFrame = std::chrono::high_resolution_clock::now();
+
     // Loop principal
     while (!glfwWindowShouldClose(window)) 
     {
@@ -100,10 +104,6 @@ int main()
         if(!pelota.espera)
         {
             pelota.move(deltaTime);
-
-            
-        
-        
 
         // Colisión con barras
         if (pelota.vx_ < 0 && pelota.collidesWith(barra1)) {

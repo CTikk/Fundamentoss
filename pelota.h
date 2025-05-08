@@ -11,14 +11,14 @@ public:
     float vx_, vy_;
     float velocidad_;
     float radio_;
-    float tiempoEspera = 5.0f;
+    float tiempoEspera = 1.0f;
     float tiempoReinicio;
     bool espera;
 
     GLuint VAO_, VBO_, EBO_;
 
-    Pelota(float velocidadInicial = 1.0f, float radio = 0.025f);
-    void move();
+    Pelota(float velocidadInicial = 1.5f, float radio = 0.025f);
+    void move(float deltaTime);
     void draw(GLuint shaderProgram);
     void reset();
 
