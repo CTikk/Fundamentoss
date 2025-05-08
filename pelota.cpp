@@ -78,8 +78,8 @@ void Pelota::reset() {
     x_ = y_ = 0.0f;
     float angle = ((std::rand() % 120) - 60) * 3.14159f / 180.0f;
     float dir = (std::rand() % 2 == 0) ? 1.0f : -1.0f;
-    vx_ = dir * std::cos(angle) * velocidad_;
-    vy_ = std::sin(angle) * velocidad_;
+    vx_ = dir * std::cos(angle) * velocidad_ * deltaTime;
+    vy_ = std::sin(angle) * velocidad_ * delaTime;
 }
 
 void Pelota::destroy() {

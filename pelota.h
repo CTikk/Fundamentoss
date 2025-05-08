@@ -11,6 +11,7 @@ public:
     float vx_, vy_;
     float velocidad_;
     float radio_;
+    const float deltaTime = 1.0f / 60.0f;
 
     GLuint VAO_, VBO_, EBO_;
 
