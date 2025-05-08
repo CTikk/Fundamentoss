@@ -11,10 +11,10 @@ public:
     float vx_, vy_;
     float velocidad_;
     float radio_;
-    const float deltaTime = 1.0f / 60.0f;
-    bool espera;
+    float deltaTime = 1.0f / 60.0f;
     float tiempoEspera = 1.0f;
     float tiempoReinicio;
+    bool espera;
 
     GLuint VAO_, VBO_, EBO_;
 
@@ -22,9 +22,9 @@ public:
     void move();
     void draw(GLuint shaderProgram);
     void reset();
-    bool timer();
 
     bool collidesWith(const Barra& barra);
+    bool timer();
     int checkPoint(); // Devuelve 1 si punto jugador 1, 2 si punto jugador 2, 0 si ninguno
 
     void destroy();

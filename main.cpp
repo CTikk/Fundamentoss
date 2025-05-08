@@ -112,7 +112,7 @@ int main()
                 puntajeJugador1++;
                 std::cout << "Jugador 1 lleva: " << puntajeJugador1 << " puntos \n";
             }
-            else if(puntp == 2)
+            else if(punto == 2)
             {
               puntajeJugador2++;
               std::cout << "Jugador 2 lleva: " << puntajeJugador1 << " puntos \n";
